@@ -22,7 +22,7 @@ This will add the storymapper.sh script to your PATH, making it available global
 
 ## Usage
 To initialize a new project, navigate to the desired project directory and run the storymapper command, followed by the name of the new project directory:
-```storymapper init my-project```
+```./storymapper init my-project```
 
 This will create a new directory my-project and copy all the files from the template directory into the new project directory.
 

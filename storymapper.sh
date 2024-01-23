@@ -17,13 +17,12 @@ if [ "$1" == "init" ]; then
 
   # Create the target directory
   mkdir "$new_dir"
-  cd "$new_dir"
-
+  
   # Copy the files from the source directory
-  cp "$src_dir/index.html" .
-  cp "$src_dir/config.js" .
-  cp "$src_dir/map.js" .
-  cp "$src_dir/styles.css" .
+  cp "$src_dir/index.html" "$new_dir"
+  cp "$src_dir/config.js" "$new_dir"
+  cp "$src_dir/map.js" "$new_dir"
+  cp "$src_dir/styles.css" "$new_dir"
 
   echo "Project initialized successfully in directory '$new_dir'."
 else

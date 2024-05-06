@@ -18,7 +18,19 @@
     <div id='story'></div>
     <div id='legend'></div>
     <script src='config.js'></script>
+    <script src='layerConfig.js'></script>
     <script type='text/javascript' src="map.js"></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            window.loadConfig().then(config => {
+                window.initMap(config);
+                window.loadLayerConfig().then(sourceConfig, layerConfig => {
+                    window.initLayers(map, sourceConfig, layerConfig);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

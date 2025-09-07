@@ -1,0 +1,15 @@
+{
+  "collectionName": "actions",
+  "info": {
+    "singularName": "action",
+    "pluralName": "actions",
+    "displayName": "Action"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "type": { "type": "string", "required": true },
+    "params": { "type": "json" }
+  }
+}

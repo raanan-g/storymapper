@@ -1,0 +1,33 @@
+{
+  "collectionName": "stories",
+  "info": {
+    "singularName": "story",
+    "pluralName": "stories",
+    "displayName": "Story"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "slug": { "type": "string", "unique": true, "required": true },
+    "title": { "type": "string", "required": true },
+    "subtitle": { "type": "string" },
+    "byline": { "type": "string" },
+    "toptitle": { "type": "string" },
+    "style": { "type": "string" },
+    "alignment": { "type": "enumeration", "enum": ["left", "center", "right"], "default": "left" },
+    "theme": { "type": "enumeration", "enum": ["light", "dark", "auto"], "default": "auto" },
+    "accessToken": { "type": "string" },
+    "initialLocation": { "type": "json" },
+    "chapters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::chapter.chapter"
+    },
+    "layers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::layer.layer"
+    }
+  }
+}

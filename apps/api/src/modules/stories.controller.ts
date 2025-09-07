@@ -1,26 +1,37 @@
 import { Controller, Get, Param } from "@nestjs/common";
-import { Story } from "@story/config-schema";
+import { Story as StorySchema } from "@story/config-schema";
 
-const sample: Story = {
-  slug: "demo",
-  title: "Demo Story",
-  accessToken: "REPLACE_ME",
-  style: "mapbox://styles/mapbox/light-v11",
-  alignment: "left",
-  theme: "auto",
-  chapters: [{
-    id:"c0", title:"Welcome", bodyHtml:"<p>Demo</p>",
-    location:{ center:[-98,39], zoom:3, pitch:0, bearing:0 },
-    enterActions:[], exitActions:[]
-  }],
-  layers: []
-};
+async function fetchJson(url: string) {
+  return fetch(url).then(r => r.json());
+}
 
 @Controller("stories")
 export class StoriesController {
   @Get(":slug/config")
-  config(@Param("slug") slug: string) {
-    // TODO: fetch from CMS; for now return sample
-    return sample;
+  async config(@Param("slug") slug: string) {
+    // Example Strapi REST filter; adjust to your content-type & fields
+    const base = process.env.STRAPI_BASE || "http://localhost:1337/api";
+    const story = await fetchJson(`${base}/stories?filters[slug][$eq]=${slug}&populate=deep`);
+    const s = story?.data?.[0]?.attributes;
+    // TODO: map Strapi shape -> StorySchema.parse(...)
+    const out: any = {
+      slug,
+      title: s?.title ?? slug,
+      accessToken: process.env.MAPBOX_TOKEN || "REPLACE_ME",
+      style: s?.style || "mapbox://styles/mapbox/light-v11",
+      alignment: s?.alignment || "left",
+      theme: s?.theme || "auto",
+      initialLocation: s?.initialLocation,
+      layers: s?.layers || [],
+      chapters: (s?.chapters || []).map((c: any) => ({
+        id: c.id || c.slug || "chapter",
+        title: c.title,
+        bodyHtml: c.bodyHtml || "",
+        location: c.location,
+        enterActions: c.enterActions || [],
+        exitActions: c.exitActions || []
+      }))
+    };
+    return out as StorySchema;
   }
 }

@@ -19,4 +19,3 @@ This repository lays out the folder structure for the future Storymapper platfor
 
 The legacy static template now lives under `legacy/site/`. Run `npm run dev` in that
 directory to preview it locally at [http://localhost:5170](http://localhost:5170).
-

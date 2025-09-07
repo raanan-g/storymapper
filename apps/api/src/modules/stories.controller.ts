@@ -1,8 +1,10 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Body, Controller, Get, Param, Put } from "@nestjs/common";
 import { Story as StorySchema } from "@story/config-schema";
 
 async function fetchJson(url: string) {
-  return fetch(url).then(r => r.json());
+  return fetch(url)
+    .then(r => r.json())
+    .catch(() => null);
 }
 
 @Controller("stories")
@@ -33,5 +35,11 @@ export class StoriesController {
       }))
     };
     return out as StorySchema;
+  }
+
+  @Put(":slug")
+  async update(@Param("slug") slug: string, @Body() body: any) {
+    // TODO: forward to Strapi; stub OK
+    return { ok: true, slug, received: body };
   }
 }

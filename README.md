@@ -22,3 +22,4 @@ This repository lays out the folder structure for the future Storymapper platfor
 Install dependencies with `pnpm install`. Build all packages with `pnpm build`.
 
 To preview the legacy static template, run `pnpm dev:legacy` and open [http://localhost:5170](http://localhost:5170).
+

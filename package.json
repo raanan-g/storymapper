@@ -12,4 +12,5 @@
     "build": "pnpm -r --filter \"./packages/*\" build && pnpm -r --filter \"./apps/*\" build",
     "dev:legacy": "pnpm --filter storymapper-legacy dev"
   }
+  "version": "0.0.0"
 }

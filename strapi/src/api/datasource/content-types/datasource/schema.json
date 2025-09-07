@@ -1,0 +1,17 @@
+{
+  "collectionName": "datasources",
+  "info": {
+    "singularName": "datasource",
+    "pluralName": "datasources",
+    "displayName": "DataSource"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "slug": { "type": "string", "unique": true },
+    "type": { "type": "string" },
+    "url": { "type": "string" },
+    "config": { "type": "json" }
+  }
+}

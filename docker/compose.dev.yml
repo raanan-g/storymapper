@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  api:
+    build: ../apps/api
+    command: pnpm -F storymapper-api dev
+    working_dir: /app
+    volumes: [ "../:/app" ]
+    ports: [ "8080:8080" ]
+  web:
+    build: ../apps/web
+    command: pnpm -F storymapper-web dev --host
+    working_dir: /app
+    environment: [ "VITE_API_BASE=http://localhost:8080/api" ]
+    volumes: [ "../:/app" ]
+    ports: [ "5173:5173" ]
+  gee:
+    image: python:3.11-slim
+    working_dir: /srv
+    volumes: [ "../services/gee-proxy:/srv" ]
+    command: bash -lc "pip install -q fastapi uvicorn && uvicorn main:app --host 0.0.0.0 --port 8090 --reload"
+    ports: [ "8090:8090" ]
+  db:
+    image: postgres:15
+    environment: { POSTGRES_PASSWORD: postgres, POSTGRES_USER: postgres, POSTGRES_DB: storymapper }
+    ports: [ "5432:5432" ]
+  strapi:
+    image: node:20
+    working_dir: /srv
+    volumes: [ "../strapi:/srv" ]
+    command: bash -lc "npm i && npm run develop"
+    ports: [ "1337:1337" ]

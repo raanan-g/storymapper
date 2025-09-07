@@ -1,0 +1,30 @@
+{
+  "collectionName": "chapters",
+  "info": {
+    "singularName": "chapter",
+    "pluralName": "chapters",
+    "displayName": "Chapter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "slug": { "type": "string", "required": true },
+    "title": { "type": "string" },
+    "image": { "type": "string" },
+    "imageCredit": { "type": "string" },
+    "bodyHtml": { "type": "text" },
+    "location": { "type": "json" },
+    "enterActions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::action.action"
+    },
+    "exitActions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::action.action"
+    },
+    "durationMs": { "type": "integer" }
+  }
+}

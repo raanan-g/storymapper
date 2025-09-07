@@ -1,0 +1,12 @@
+node_modules/
+package-lock.json
+dist/
+
+pnpm-lock.yaml
+*.tsbuildinfo
+apps/web/src/**/*.js
+__pycache__/
+*.pyc
+strapi/.cache/
+strapi/build/
+strapi/.tmp/

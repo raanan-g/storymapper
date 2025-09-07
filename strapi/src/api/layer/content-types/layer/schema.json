@@ -1,0 +1,25 @@
+{
+  "collectionName": "layers",
+  "info": {
+    "singularName": "layer",
+    "pluralName": "layers",
+    "displayName": "Layer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "slug": { "type": "string", "unique": true },
+    "source": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::datasource.datasource"
+    },
+    "type": { "type": "enumeration", "enum": ["fill","line","circle","symbol","raster","fill-extrusion"] },
+    "layout": { "type": "json" },
+    "paint": { "type": "json" },
+    "minzoom": { "type": "decimal" },
+    "maxzoom": { "type": "decimal" },
+    "beforeId": { "type": "string" }
+  }
+}

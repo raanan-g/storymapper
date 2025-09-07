@@ -3,4 +3,5 @@ package-lock.json
 dist/
 pnpm-lock.yaml
 *.tsbuildinfo
-apps/web/src/*.js
+apps/web/src/**/*.js
+

@@ -1,0 +1,1 @@
+{ "compilerOptions": { "module":"NodeNext","target":"ES2020","moduleResolution":"NodeNext","outDir":"dist","emitDecoratorMetadata":true,"experimentalDecorators":true,"strict":true }, "include":["src"] }

@@ -1,5 +1,16 @@
 {
   "name": "storymapper",
-  "version": "0.0.0",
-  "private": true
+  "private": true,
+  "packageManager": "pnpm@9.7.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "services/*",
+    "legacy/site"
+  ],
+  "scripts": {
+    "build": "pnpm -r --filter \"./packages/*\" build && pnpm -r --filter \"./apps/*\" build",
+    "dev:legacy": "pnpm --filter storymapper-legacy dev"
+  }
+  "version": "0.0.0"
 }

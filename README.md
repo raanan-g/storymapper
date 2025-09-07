@@ -17,5 +17,9 @@ This repository lays out the folder structure for the future Storymapper platfor
 - `legacy/` – Original static template kept for compatibility
 - `docker/` – Docker configuration
 
-The legacy static template now lives under `legacy/site/`. Run `npm run dev` in that
-directory to preview it locally at [http://localhost:5170](http://localhost:5170).
+## Development
+
+Install dependencies with `pnpm install`. Build all packages with `pnpm build`.
+
+To preview the legacy static template, run `pnpm dev:legacy` and open [http://localhost:5170](http://localhost:5170).
+
